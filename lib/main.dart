@@ -1,5 +1,3 @@
-// ignore_for_file: library_private_types_in_public_api
-
 import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
@@ -7,27 +5,40 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  static const title = 'Null Space';
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) =>  MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Bottom Navigation Bar',
+        home: MainPage(),
+        theme: ThemeData(
+          primarySwatch: Colors.pink,
+        ),
+  );
+        
+}
+//Mi Statefull
+class MainPage extends StatefulWidget {
+  const MainPage({super.key});
 
   @override
-  _MyAppState createState() => _MyAppState();
+  // ignore: library_private_types_in_public_api
+  _MainPageState createState() => _MainPageState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _MainPageState extends State<MainPage> {
   var _currentIndex = 0;
+  final List <Widget> screens=[
+    MainPage(),
+    //MenuPage(),
+    //LocationPage(),
+    //ContactPage(),
+  ];
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: MyApp.title,
-      theme: ThemeData(
-        primarySwatch: Colors.pink,
-      ),
-      home: Scaffold(
+  Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: const Center(child: Text(MyApp.title, textAlign: TextAlign.center)),
+          title: const Center(child: Text('Null Space', textAlign: TextAlign.center)),
         ),
         bottomNavigationBar: SalomonBottomBar(
           currentIndex: _currentIndex,
@@ -38,32 +49,30 @@ class _MyAppState extends State<MyApp> {
               icon: const Icon(Icons.home),
               title: const Text("Home"),
               selectedColor: Colors.purple,
-              
             ),
 
             /// Likes
             SalomonBottomBarItem(
-              icon: const Icon(Icons.restaurant_menu),
+              icon: const Icon(Icons.favorite_border),
               title: const Text("Likes"),
               selectedColor: Colors.pink,
             ),
 
             /// Search
             SalomonBottomBarItem(
-              icon: const Icon(Icons.map),
+              icon: const Icon(Icons.search),
               title: const Text("Search"),
               selectedColor: Colors.orange,
             ),
 
             /// Profile
             SalomonBottomBarItem(
-              icon: const Icon(Icons.phone),
+              icon: const Icon(Icons.person),
               title: const Text("Profile"),
               selectedColor: Colors.teal,
             ),
           ],
         ),
-      ),
-    );
-  }
+  );
 }
+        

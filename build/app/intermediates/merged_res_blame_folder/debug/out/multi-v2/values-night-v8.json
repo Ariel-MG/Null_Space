@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/arielmg/Documents/dev/personal_proyects/null_space/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8.xml",
+            "outputFile": "/Users/arielmg/Documents/GitHub/Null_Space/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "/Users/arielmg/Documents/dev/personal_proyects/null_space/android/app/src/main/res/values-night/styles.xml",
+                    "source": "/Users/arielmg/Documents/GitHub/Null_Space/android/app/src/main/res/values-night/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
