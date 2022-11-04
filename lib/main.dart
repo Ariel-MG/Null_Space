@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
+//import 'package:google_fonts/google_fonts.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
+import 'package:pdf/pdf.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
   @override
   Widget build(BuildContext context) =>  MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Bottom Navigation Bar',
-        home: MainPage(),
+        title: 'Bottom Navigation Bar Null Space',
+        home: const MainPage(),
         theme: ThemeData(
           primarySwatch: Colors.pink,
         ),
@@ -29,7 +32,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   var _currentIndex = 0;
   final List <Widget> screens=[
-    MainPage(),
+    const MainPage(),
     //MenuPage(),
     //LocationPage(),
     //ContactPage(),
@@ -38,7 +41,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: const Center(child: Text('Null Space', textAlign: TextAlign.center)),
+          title: const Center(child: Text('Null Space',textAlign: TextAlign.center)),
         ),
         bottomNavigationBar: SalomonBottomBar(
           currentIndex: _currentIndex,
@@ -48,28 +51,28 @@ class _MainPageState extends State<MainPage> {
             SalomonBottomBarItem(
               icon: const Icon(Icons.home),
               title: const Text("Home"),
-              selectedColor: Colors.purple,
+              selectedColor: Colors.pink,
             ),
 
             /// Likes
             SalomonBottomBarItem(
-              icon: const Icon(Icons.favorite_border),
-              title: const Text("Likes"),
+              icon: const Icon(Icons.restaurant_menu),
+              title: const Text("Menú"),
               selectedColor: Colors.pink,
             ),
 
             /// Search
             SalomonBottomBarItem(
-              icon: const Icon(Icons.search),
-              title: const Text("Search"),
-              selectedColor: Colors.orange,
+              icon: const Icon(Icons.directions),
+              title: const Text("Ubicación"),
+              selectedColor: Colors.pink,
             ),
 
             /// Profile
             SalomonBottomBarItem(
               icon: const Icon(Icons.person),
-              title: const Text("Profile"),
-              selectedColor: Colors.teal,
+              title: const Text("Contact"),
+              selectedColor: Colors.pink,
             ),
           ],
         ),
