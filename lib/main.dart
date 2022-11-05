@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 //import 'package:google_fonts/google_fonts.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
-import 'package:pdf/pdf.dart';
+
+import 'ContactPage.dart';
+import 'HomePage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,17 +33,39 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   var _currentIndex = 0;
+  
   final List <Widget> screens=[
-    const MainPage(),
+    const HomePage(),
     //MenuPage(),
     //LocationPage(),
     //ContactPage(),
   ];
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) {
+    final ButtonStyle style = TextButton.styleFrom(
+      foregroundColor: Theme.of(context).colorScheme.onPrimary);
+    return Scaffold(
         appBar: AppBar(
-          title: const Center(child: Text('Null Space',textAlign: TextAlign.center)),
+          title: const Text('Null Space'),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.phone),
+            tooltip: 'Contacto',
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute<void>(
+                builder: (BuildContext context) {
+                  return Scaffold(
+                    appBar: AppBar(
+                      title: const Text('Contacto'),
+                    ),
+                    body: ContactPage(),
+                  );
+                },
+              ));
+            },
+          ),
+        ],
         ),
         bottomNavigationBar: SalomonBottomBar(
           currentIndex: _currentIndex,
@@ -63,19 +87,20 @@ class _MainPageState extends State<MainPage> {
 
             /// Search
             SalomonBottomBarItem(
-              icon: const Icon(Icons.directions),
-              title: const Text("Ubicación"),
+              icon: const Icon(Icons.wifi),
+              title: const Text("Conexión"),
               selectedColor: Colors.pink,
             ),
 
             /// Profile
             SalomonBottomBarItem(
-              icon: const Icon(Icons.person),
-              title: const Text("Contact"),
+              icon: const Icon(Icons.directions),
+              title: const Text("Ubicción"),
               selectedColor: Colors.pink,
             ),
           ],
         ),
   );
+}
 }
         
