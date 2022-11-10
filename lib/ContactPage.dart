@@ -9,6 +9,7 @@ import 'package:flutter_sms/flutter_sms.dart';
 
 
 
+
 class ContactPage extends StatefulWidget {
   @override
   // ignore: library_private_types_in_public_api
@@ -18,8 +19,7 @@ class ContactPage extends StatefulWidget {
 class _ContactPageState extends State<ContactPage> {
   openwhatsapp(String message, String destinatario) async {
     var whatsapp = destinatario;
-    var whatsappURlAndroid =
-        "whatsapp://send?phone=$whatsapp&text=$message";
+    var whatsappURlAndroid = "whatsapp://send?phone=$whatsapp&text=$message";
     var whatappURLIos = "https://wa.me/$whatsapp?text=${Uri.parse(message)}";
     if (Platform.isIOS) {
       // for iOS phone only
@@ -27,7 +27,7 @@ class _ContactPageState extends State<ContactPage> {
         await launch(whatappURLIos, forceSafariVC: false);
       } else {
         ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: new Text("whatsapp no instalado")));
+            .showSnackBar(const SnackBar(content: Text("whatsapp no instalado")));
       }
     } else {
       // android , web
@@ -35,10 +35,11 @@ class _ContactPageState extends State<ContactPage> {
         await launch(whatsappURlAndroid);
       } else {
         ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: new Text("whatsapp no installed")));
+            .showSnackBar(const SnackBar(content:  Text("whatsapp no installed")));
       }
     }
   }
+  
 
   // ignore: duplicate_ignore
   _hacerLlamadaTelefonica() async {
@@ -62,13 +63,35 @@ class _ContactPageState extends State<ContactPage> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-              debugShowCheckedModeBanner: false,
-              home: Scaffold(
-                appBar: AppBar(
-                  title: const Text('Contact'),
-                ),
-                body: Center(
+    return Center(
+      child: Row(
+        //mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children:<Widget> [
+          Container(
+            margin: const EdgeInsets.all(25),
+            //height: 200,
+            child: IconButton(
+              icon: const Icon(Icons.whatsapp),
+              onPressed:_hacerLlamadaTelefonica,
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.all(25),
+            child: IconButton(
+              icon: const Icon(Icons.whatsapp), 
+              onPressed: () { 
+                String mensaje = "Esto es un mensaje";
+                String destinatario = "+52555555555";
+                openwhatsapp(mensaje, destinatario);
+               },  
+            ),
+          ),
+       ],
+      ),
+    );   
+  }
+}
+/*Center(
                   child: Column(children: <Widget>[
                     Container(
                       margin: const EdgeInsets.all(25),
@@ -126,7 +149,10 @@ class _ContactPageState extends State<ContactPage> {
                 ),
               ),
             )
-          ]))),
-    );
+          ]
+          )
+          );
   }
 }
+*/
+
