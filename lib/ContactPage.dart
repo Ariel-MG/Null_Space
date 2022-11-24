@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_sms/flutter_sms.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 
 
 
@@ -44,22 +44,15 @@ class _ContactPageState extends State<ContactPage> {
   // ignore: duplicate_ignore
   _hacerLlamadaTelefonica() async {
     const url = 'tel:+52 5951229981';
-    // ignore: deprecated_member_use
+    
     if (await canLaunch(url)) {
-      // ignore: deprecated_member_use
       await launch(url);
     } else {
       throw 'Error al llamar a $url';
     }
   }
 
-  void _enviarSMS(String message, List<String> recipents) async {
-    String _resultado = await sendSMS(message: message, recipients: recipents)
-        .catchError((onError) {
-      print(onError);
-    });
-    print(_resultado);
-  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -80,9 +73,11 @@ class _ContactPageState extends State<ContactPage> {
             child: IconButton(
               icon: const Icon(Icons.whatsapp), 
               onPressed: () { 
+                
                 String mensaje = "Esto es un mensaje";
-                String destinatario = "+52555555555";
+                String destinatario = "5511484607";
                 openwhatsapp(mensaje, destinatario);
+                
                },  
             ),
           ),
