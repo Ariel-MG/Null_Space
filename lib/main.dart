@@ -1,13 +1,14 @@
-import 'package:flutter/material.dart';
-//import 'package:google_fonts/google_fonts.dart';
-import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
+// ignore_for_file: library_private_types_in_public_api
 
+import 'package:flutter/material.dart';
+import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'ContactPage.dart';
-//import 'HomePage.dart';
+import 'HomePage.dart';
 
 void main() {
   runApp(const MyApp());
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -25,26 +26,19 @@ class MyApp extends StatelessWidget {
 //Mi Statefull
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
-
   @override
-  // ignore: library_private_types_in_public_api
   _MainPageState createState() => _MainPageState();
 }
 
 class _MainPageState extends State<MainPage> {
   var _currentIndex = 0;
-  
   final List <Widget> screens=[
-    //const HomePage(),
-    //MenuPage(),
-    //LocationPage(),
-    //ContactPage(),
+    HomePage(),
   ];
+  
 
   @override
   Widget build(BuildContext context) {
-    final ButtonStyle style = TextButton.styleFrom(
-      foregroundColor: Theme.of(context).colorScheme.onPrimary);
     return Scaffold(
         appBar: AppBar(
           title: const Text('Null Space'),
@@ -59,7 +53,7 @@ class _MainPageState extends State<MainPage> {
                     appBar: AppBar(
                       title: const Text('Contacto'),
                     ),
-                    body: ContactPage(),
+                    body: HomePage(),
                   );
                 },
               ));
@@ -67,39 +61,46 @@ class _MainPageState extends State<MainPage> {
           ),
         ],
         ),
-        bottomNavigationBar: SalomonBottomBar(
-          currentIndex: _currentIndex,
-          onTap: (i) => setState(() => _currentIndex = i),
-          items: [
-            /// Home
-            SalomonBottomBarItem(
-              icon: const Icon(Icons.home),
-              title: const Text("Home"),
-              selectedColor: Colors.pink,
-            ),
-
-            /// Likes
-            SalomonBottomBarItem(
-              icon: const Icon(Icons.restaurant_menu),
-              title: const Text("Menú"),
-              selectedColor: Colors.pink,
-            ),
-
-            /// Search
-            SalomonBottomBarItem(
-              icon: const Icon(Icons.wifi),
-              title: const Text("Conexión"),
-              selectedColor: Colors.pink,
-            ),
-
-            /// Profile
-            SalomonBottomBarItem(
-              icon: const Icon(Icons.directions),
-              title: const Text("Ubicción"),
-              selectedColor: Colors.pink,
-            ),
-          ],
+        
+        body: IndexedStack(
+          index: _currentIndex,
+          children: screens,
         ),
+
+          bottomNavigationBar: SalomonBottomBar(
+            currentIndex: _currentIndex,
+            onTap: (i) => setState(() => _currentIndex = i),
+            items: [
+              /// Home
+              SalomonBottomBarItem(
+                icon: const Icon(Icons.home),
+                title: const Text("Home"),
+                selectedColor: Colors.pink,
+              ),
+
+              /// Likes
+              SalomonBottomBarItem(
+                icon: const Icon(Icons.restaurant_menu),
+                title: const Text("Menú"),
+                selectedColor: Colors.pink,
+              ),
+
+              /// Search
+              SalomonBottomBarItem(
+                icon: const Icon(Icons.wifi),
+                title: const Text("Conexión"),
+                selectedColor: Colors.pink,
+              ),
+
+              /// Profile
+              SalomonBottomBarItem(
+                icon: const Icon(Icons.directions),
+                title: const Text("Ubicción"),
+                selectedColor: Colors.pink,
+              ),
+            ],
+          ),
+        
   );
 }
 }
