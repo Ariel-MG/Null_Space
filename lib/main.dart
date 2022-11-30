@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'ContactPage.dart';
 import 'HomePage.dart';
+import 'MapsPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,6 +35,8 @@ class _MainPageState extends State<MainPage> {
   var _currentIndex = 0;
   final List <Widget> screens=[
     HomePage(),
+  
+    const MapsPage(),
   ];
   
 
@@ -53,7 +56,7 @@ class _MainPageState extends State<MainPage> {
                     appBar: AppBar(
                       title: const Text('Contacto'),
                     ),
-                    body: HomePage(),
+                    body: ContactPage(),
                   );
                 },
               ));
