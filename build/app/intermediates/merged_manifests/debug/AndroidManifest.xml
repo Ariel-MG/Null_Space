@@ -55,6 +55,10 @@
         android:debuggable="true"
         android:icon="@mipmap/ic_launcher"
         android:label="null_space" >
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBAOvdIy86h-N8aKmC9MOR1CHpXHFECP-k" />
+
         <activity
             android:name="com.example.null_space.MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"

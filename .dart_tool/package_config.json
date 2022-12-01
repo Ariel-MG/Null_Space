@@ -140,6 +140,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "full_screen_image_null_safe",
+      "rootUri": "file:///Users/arielmg/Documents/dev/flutter/.pub-cache/hosted/pub.dartlang.org/full_screen_image_null_safe-2.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "google_fonts",
       "rootUri": "file:///Users/arielmg/Documents/dev/flutter/.pub-cache/hosted/pub.dartlang.org/google_fonts-2.3.3",
       "packageUri": "lib/",
@@ -452,7 +458,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2022-11-30T05:20:28.649732Z",
+  "generated": "2022-12-01T01:58:37.375860Z",
   "generator": "pub",
   "generatorVersion": "2.18.5"
 }

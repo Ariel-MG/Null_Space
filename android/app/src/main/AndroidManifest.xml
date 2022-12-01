@@ -5,6 +5,9 @@
         android:label="null_space"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+    <meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="AIzaSyBAOvdIy86h-N8aKmC9MOR1CHpXHFECP-k" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -21,8 +24,7 @@
             <meta-data
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
-              android:name="com.google.android.geo.API_KEY"
-              android:value="AIzaSyBAOvdIy86h-N8aKmC9MOR1CHpXHFECP-k"/>
+            
               />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

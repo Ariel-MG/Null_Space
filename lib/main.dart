@@ -2,9 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
+import 'ConexionPage.dart';
 import 'ContactPage.dart';
 import 'HomePage.dart';
 import 'MapsPage.dart';
+import 'MenuPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,7 +37,8 @@ class _MainPageState extends State<MainPage> {
   var _currentIndex = 0;
   final List <Widget> screens=[
     HomePage(),
-  
+    MenuPage(),
+    const ConexionPage(),
     const MapsPage(),
   ];
   

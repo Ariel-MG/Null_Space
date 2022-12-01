@@ -1,11 +1,7 @@
 // ignore_for_file: deprecated_member_use, use_key_in_widget_constructors, depend_on_referenced_packages
-
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-
-
 
 class ContactPage extends StatefulWidget {
   @override
@@ -43,9 +39,6 @@ class _ContactPageState extends State<ContactPage> {
         }
       }
 
-  
-
-  // ignore: duplicate_ignore
   _hacerLlamadaTelefonica() async {
     const url = 'tel:+52 5951229981';
     
@@ -56,8 +49,33 @@ class _ContactPageState extends State<ContactPage> {
     }
   }
 
-  
-
+  Widget build(BuildContext context)  {
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[  
+            Column(
+              children: const <Widget>[
+                Padding(
+                  padding: EdgeInsets.all(0),
+                  child: Image(image: AssetImage('assets/LatteFrio.jpg'),),
+                )
+              ],
+            ),
+            Column(
+              children: const <Widget>[
+                Padding(
+                  padding: EdgeInsets.all(0),
+                  child: Image(image: AssetImage('assets/LatteFrio.jpg'),),
+                )
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+  }
+/*
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,9 +102,7 @@ class _ContactPageState extends State<ContactPage> {
               child: IconButton(
                 icon: const Icon(Icons.whatsapp), 
                 onPressed: () { 
-                  
-                  
-                  openWhatsapp( text: "Hola",number:"52 5951229981");
+                  openWhatsapp( text: "Hola, quiero informes sobre...",number:"52 5951229981");
                   
                  },  
               ),
@@ -96,5 +112,5 @@ class _ContactPageState extends State<ContactPage> {
       ],
       )
     );
-  }
+  }*/
 }
