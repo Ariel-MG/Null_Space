@@ -7,6 +7,7 @@ final List<String> imgList = [
   'assets/portda1.jpg',
   'assets/portada2.jpg',
   'assets/Chilaquiles Verdes.jpg',
+  'assets/Capuchino.jpg',
 ];
 
 

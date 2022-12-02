@@ -15,7 +15,7 @@ class _ContactPageState extends State<ContactPage> {
       required String text,
       required String number}) async {
 
-        var whatsapp = number; //+92xx enter like this
+        var whatsapp = number; 
         var whatsappURlAndroid = "whatsapp://send?phone=$whatsapp&text=$text";
         var whatsappURLIos = "https://wa.me/$whatsapp?text=${Uri.tryParse(text)}";
         if (Platform.isIOS) {
@@ -39,6 +39,18 @@ class _ContactPageState extends State<ContactPage> {
         }
       }
 
+      void openInstagram() async {
+ 
+        var whatsappURlAndroid = "https://www.instagram.com/nullspacecafe/";
+
+        if (await canLaunchUrl(Uri.parse(whatsappURlAndroid))) {
+            await launchUrl(Uri.parse(whatsappURlAndroid));
+          } else {
+            ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text("Whatsapp not installed")));
+          }
+      }
+
   _hacerLlamadaTelefonica() async {
     const url = 'tel:+52 5951229981';
     
@@ -49,6 +61,7 @@ class _ContactPageState extends State<ContactPage> {
     }
   }
 
+  @override
   Widget build(BuildContext context)  {
     return Scaffold(
       body: SingleChildScrollView(
@@ -58,59 +71,67 @@ class _ContactPageState extends State<ContactPage> {
               children: const <Widget>[
                 Padding(
                   padding: EdgeInsets.all(0),
-                  child: Image(image: AssetImage('assets/LatteFrio.jpg'),),
+                  child: Image(image: AssetImage('assets/Organiza tus eventos con nosotros.png'),),
                 )
               ],
             ),
             Column(
+              
               children: const <Widget>[
+              
                 Padding(
                   padding: EdgeInsets.all(0),
-                  child: Image(image: AssetImage('assets/LatteFrio.jpg'),),
+                  child: Image(image: AssetImage('assets/Screen Shot 2022-12-01 at 18.44.11.png'),),
+                  
                 )
               ],
-            )
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children:<Widget> [
+
+              //Whatsapp
+              Container(
+                margin: const EdgeInsets.all(25),
+                //height: 200,
+                child: IconButton(
+                iconSize: 100,
+                icon: const Icon(Icons.phone),
+                onPressed:_hacerLlamadaTelefonica,
+                ),
+              ),
+
+              //Mensaje
+              Container(
+                margin: const EdgeInsets.all(25),
+                child: IconButton(
+                  iconSize: 100,
+                  icon: const Icon(Icons.whatsapp), 
+                  onPressed: () { 
+                    openWhatsapp( text: "Hola, quiero informes sobre...",number:"52 5951229981");                
+                 },  
+                ),
+              ),
+              
+            ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children:<Widget> [
+                Container(
+                margin: const EdgeInsets.all(25),
+                //height: 200,
+                child: IconButton(
+                iconSize: 100,
+                icon: const Icon(Icons.facebook_sharp),
+                onPressed:openInstagram,
+                ),
+              ),
+              ]  
+            ),
           ],
         ),
       ),
     );
   }
-/*
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children:<Widget> [
-
-            //Whatsapp
-            Container(
-              margin: const EdgeInsets.all(25),
-              //height: 200,
-              child: IconButton(
-                icon: const Icon(Icons.phone),
-                onPressed:_hacerLlamadaTelefonica,
-              ),
-            ),
-
-            //Mensaje
-            Container(
-              margin: const EdgeInsets.all(25),
-              child: IconButton(
-                icon: const Icon(Icons.whatsapp), 
-                onPressed: () { 
-                  openWhatsapp( text: "Hola, quiero informes sobre...",number:"52 5951229981");
-                  
-                 },  
-              ),
-            ),
-         ],
-        ),
-      ],
-      )
-    );
-  }*/
 }
